@@ -37,7 +37,7 @@ signs_info=[
     '97d8103d898151d54bf9709a6335fda5',
     '599923e546d25345f8356dba30ec9d32',
     'd13c106eb72891097cfba0f73b3bc151',
-    'e2f44eb32611bfc93fedeb237f529b62',
+    'be1f5c6b95e7a2bfa70fc64cd8b11cf6',
 ]
 
 goods = {}
@@ -71,12 +71,13 @@ for page in range(1,11): # в запросе 10 товаров, поэтому �
             data[f'offers[{count}]'] = variant['id']
             count += 1
 
-    # Запрос для цен
-    goods_info = requests.post(
+    res = requests.post(
         'https://4lapy.ru/api/v2/catalog/product/info-list/',
         headers=headers,
         data=data,
-    ).json()['data']['products']
+    ).json()
+    # Запрос для цен
+    goods_info = res['data']['products']
 
     # Записываем цены
     for good in goods:
