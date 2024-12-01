@@ -37,7 +37,7 @@ signs_info=[
     '97d8103d898151d54bf9709a6335fda5',
     '599923e546d25345f8356dba30ec9d32',
     'd13c106eb72891097cfba0f73b3bc151',
-    '0e6a74bbbc1cbc20c4fd8fa51392f8e5',
+    'be1f5c6b95e7a2bfa70fc64cd8b11cf6',
 ]
 
 goods = {}
@@ -76,8 +76,6 @@ for page in range(1,11): # в запросе 10 товаров, поэтому �
         headers=headers,
         data=data,
     ).json()
-    if res.get('error'):
-        continue
     # Запрос для цен
     goods_info = res['data']['products']
 
